@@ -51,7 +51,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', compact('category')); // Show the form for editing the category
     }
 
     /**
@@ -59,7 +59,12 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        try {
+            (new Category())->updateCategory($request, $category); // Update the category using the model method
+            return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+        } catch (\Throwable $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to update category: ' . $e->getMessage()]);
+        }
     }
 
     /**
@@ -67,6 +72,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try {
+            (new Category())->deleteCategory($category);
+            return redirect()->route('category.index')->with('success', 'Category deleted successfully.');
+        } catch (\Throwable $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to delete category: ' . $e->getMessage()]);
+        }
     }
 }
