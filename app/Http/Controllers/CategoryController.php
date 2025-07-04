@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        $categories = (new Category())->getAllCategories(); // Fetch all categories using the model method
+        return view('category.index', compact('categories')); // Return the view with categories data
     }
 
     /**

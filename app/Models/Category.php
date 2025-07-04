@@ -20,6 +20,11 @@ class Category extends Model
         ];
     }
 
+    final public function getAllCategories()
+    {
+        return self::query()->get(); // sob category nia aschi
+    }
+
 
     final function storeCategory(Request $request)
     {
