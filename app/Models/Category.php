@@ -41,5 +41,10 @@ class Category extends Model
         return $category->delete(); // delete korar jonno
     }
 
+    final public function getCategoryAssoc()
+    {
+        return self::query()->pluck('id','name');
+    }
+
 
 }
