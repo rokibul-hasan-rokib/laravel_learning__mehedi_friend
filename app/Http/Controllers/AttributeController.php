@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attribute;
 use App\Http\Requests\StoreAttributeRequest;
 use App\Http\Requests\UpdateAttributeRequest;
+use Illuminate\View\View;
 
 class AttributeController extends Controller
 {
@@ -27,7 +28,7 @@ class AttributeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAttributRequest $request)
+    public function store(StoreAttributeRequest $request)
     {
         try {
             (new Attribute())->storeAttribut($request);

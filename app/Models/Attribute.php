@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Attribute extends Model
 {
@@ -14,15 +15,15 @@ class Attribute extends Model
     private function prepareAttribute(Request $request): array
     {
         return [
-            "name"=> $request->,input('name'),
-        ]:
+            "name"=> $request->input('name'),
+        ];
     }
     final public function getAllAttribute(): Collection
     {
         return self::query()->get();
     }
 
-    return self::query()->get();return self::query()->get();Attribute(Request $request)
+    final public function storeAttribute(Request $request)
     {
        return self::query()->create($this->prepareData($request));
     }
@@ -34,5 +35,6 @@ class Attribute extends Model
     final public function deleteAttribute(Attribute $attribute)
     {
         return $attribute->delete();
+    }
 
 }
