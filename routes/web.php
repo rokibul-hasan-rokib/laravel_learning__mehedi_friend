@@ -10,3 +10,7 @@ Route::get('/', function () {
 
 Route::resource('category', CategoryController::class);
 Route::resource('attribute', AttributeController::class);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
